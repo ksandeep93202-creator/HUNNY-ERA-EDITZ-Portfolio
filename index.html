@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HUNNY ERA | Portfolio</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:system-ui;
+  background:#0a0a0a;
+  color:#fff;
+}
+
+canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:-1;
+  pointer-events:none;
+}
+
+/* LOADER */
+.loader{
+  position:fixed;
+  inset:0;
+  background:#000;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:26px;
+  letter-spacing:4px;
+  z-index:999;
+  animation:fadeOut 1s ease 2s forwards;
+}
+@keyframes fadeOut{
+  to{opacity:0;visibility:hidden;}
+}
+
+/* NAVBAR */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 50px;
+  -webkit-backdrop-filter:blur(12px);
+  backdrop-filter:blur(12px);
+  background:rgba(255,255,255,0.05);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  z-index:100;
+}
+.hunny-logo{
+  width:40px;
+  height:40px;
+  object-fit:cover;
+  border-radius:50%;
+}
+
+.logo{
+  font-size:18px;
+  letter-spacing:2px;
+}
+
+.nav-links a{
+  margin-left:25px;
+  text-decoration:none;
+  color:#fff;
+  opacity:0.7;
+  transition:0.3s;
+}
+
+.nav-links a:hover{
+  opacity:1;
+}
+
+/* HERO */
+.hero{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
+}
+
+.hero h1{
+  font-size:clamp(32px,6vw,64px);
+}
+
+.hero p{
+  opacity:0.7;
+  margin-top:10px;
+}
+
+/* REELS GRID */
+.reels{
+  padding:80px 50px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+
+/* CARD */
+.reel{
+  position:relative;
+  aspect-ratio:9/16;
+  border-radius:16px;
+  overflow:hidden;
+  background:#111;
+  transition:0.3s;
+}
+
+.reel:hover{
+  transform:scale(1.05);
+}
+
+/* VIDEO */
+.reel video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* SOUND BUTTON */
+.sound-btn{
+  position:absolute;
+  bottom:12px;
+  right:12px;
+  background:rgba(0,0,0,0.6);
+  padding:8px;
+  border-radius:50%;
+  cursor:pointer;
+  font-size:14px;
+}
+
+/* FOOTER */
+footer{
+  padding:40px 20px;
+  text-align:center;
+  background:rgba(255,255,255,0.03);
+  border-top:1px solid rgba(255,255,255,0.08);
+}
+
+footer p{
+  opacity:0.6;
+  font-size:14px;
+  margin-top:5px;
+}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .reels{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:600px){
+  nav{
+    padding:15px 20px;
+  }
+
+  .nav-links{
+    display:none;
+  }
+
+  .reels{
+    grid-template-columns:1fr;
+    padding:60px 20px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="loader">HUNNY ERA</div>
+
+<!-- NAV -->
+<nav>
+  <div><img class="hunny-logo" src="Hunny Era New Logo.png" alt="Logo"></div>
+  <div class="logo">HUNNY ERA</div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="index.html">Work</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <h1>CINEMATIC EDITOR</h1>
+    <p>Premium Reels • Storytelling • Visual Experience</p>
+  </div>
+</section>
+
+<!-- REELS -->
+<section class="reels">
+
+  <div class="reel">
+    <video src="https://res.cloudinary.com/dxb9l2dzm/video/upload/f_auto,q_auto/v1777660628/Rahul_reel_edit_dil_dooba_aq6ztc.mp4" muted loop playsinline></video>
+    <div class="sound-btn">🔇</div>
+  </div>
+
+  <div class="reel">
+    <video src="https://res.cloudinary.com/dxb9l2dzm/video/upload/f_auto,q_auto/v1777660735/Intro_reel_edir_Hunny_eadqu5.mp4" muted loop playsinline></video>
+    <div class="sound-btn">🔇</div>
+  </div>
+
+  <div class="reel">
+    <video src="https://res.cloudinary.com/dxb9l2dzm/video/upload/f_auto,q_auto/v1777660781/NADAANIYA_Reel_Edit_xdrp37.mp4" muted loop playsinline></video>
+    <div class="sound-btn">🔇</div>
+  </div>
+
+  <div class="reel">
+    <video src="https://res.cloudinary.com/dxb9l2dzm/video/upload/f_auto,q_auto/v1777660713/Hunny_ERa_Edit_ukmldi.mp4" muted loop playsinline></video>
+    <div class="sound-btn">🔇</div>
+  </div>
+
+  <div class="reel">
+    <video src="https://res.cloudinary.com/dxb9l2dzm/video/upload/f_auto,q_auto/v1777660744/kanha_chhota_sa_reel_edit_djiygt.mp4" muted loop playsinline></video>
+    <div class="sound-btn">🔇</div>
+  </div>
+
+  <div class="reel">
+    <video src="https://res.cloudinary.com/dxb9l2dzm/video/upload/f_auto,q_auto/v1777660752/King_is_Back_Reel_Edit_qhz4wu.mp4" muted loop playsinline></video>
+    <div class="sound-btn">🔇</div>
+  </div>
+
+  <div class="reel">
+    <video src="https://res.cloudinary.com/dxb9l2dzm/video/upload/f_auto,q_auto/v1777660691/Focus_On_Your_Dream_Reel_Edit_ve3mdz.mp4" muted loop playsinline></video>
+    <div class="sound-btn">🔇</div>
+  </div>
+
+  <div class="reel">
+    <video src="https://res.cloudinary.com/dxb9l2dzm/video/upload/f_auto,q_auto/v1777660681/Desi_Gamers_Amit_Bhai_Reel_Edit_vqadnm.mp4" muted loop playsinline></video>
+    <div class="sound-btn">🔇</div>
+  </div>
+
+  <div class="reel">
+    <video src="https://res.cloudinary.com/dxb9l2dzm/video/upload/f_auto,q_auto/v1777660842/Taarif_kru_kya_uski_reel_edit_b1jabo.mp4" muted loop playsinline></video>
+    <div class="sound-btn">🔇</div>
+  </div>
+
+  <div class="reel">
+    <video src="https://res.cloudinary.com/dxb9l2dzm/video/upload/f_auto,q_auto/v1777660667/bairaagi_song_reel_edit_typography_xpuejv.mp4" muted loop playsinline></video>
+    <div class="sound-btn">🔇</div>
+  </div>
+
+  <div class="reel">
+    <video src="https://res.cloudinary.com/dxb9l2dzm/video/upload/f_auto,q_auto/v1777660838/sundar_satya_sanatan_ram_reel_edit_p8wla0.mp4" muted loop playsinline></video>
+    <div class="sound-btn">🔇</div>
+  </div>
+
+  <div class="reel">
+    <video src="https://res.cloudinary.com/dxb9l2dzm/video/upload/f_auto,q_auto/v1777660724/if_you_re_editor_fhrh6r.mp4" muted loop playsinline></video>
+    <div class="sound-btn">🔇</div>
+  </div>
+
+  <div class="reel">
+    <video src="https://res.cloudinary.com/dxb9l2dzm/video/upload/f_auto,q_auto/v1777660709/guitar_cover_reel_edit_j4ddue.mp4" muted loop playsinline></video>
+    <div class="sound-btn">🔇</div>
+  </div>
+
+  <div class="reel">
+    <video src="https://res.cloudinary.com/dxb9l2dzm/video/upload/f_auto,q_auto/v1777660824/sister_brother_sad_edit_soo0zo.mp4" muted loop playsinline></video>
+    <div class="sound-btn">🔇</div>
+  </div>
+
+  <div class="reel">
+    <video src="https://res.cloudinary.com/dxb9l2dzm/video/upload/f_auto,q_auto/v1777660761/Lord_intro_reel_edit_loqxv9.mp4" muted loop playsinline></video>
+    <div class="sound-btn">🔇</div>
+  </div>
+
+  <div class="reel">
+    <video src="https://res.cloudinary.com/dxb9l2dzm/video/upload/f_auto,q_auto/v1777660806/shree_raj_maharana_pratap_reel_edit_yjimco.mp4" muted loop playsinline></video>
+    <div class="sound-btn">🔇</div>
+  </div>
+
+  <div class="reel">
+    <video src="https://res.cloudinary.com/dxb9l2dzm/video/upload/f_auto,q_auto/v1777660777/my_husband_reel_edit_szufm8.mp4" muted loop playsinline></video>
+    <div class="sound-btn">🔇</div>
+  </div>
+
+  <div class="reel">
+    <video src="https://res.cloudinary.com/dxb9l2dzm/video/upload/f_auto,q_auto/v1777660864/WhatsApp_Video_2026-05-01_at_9.15.04_PM_us1evp.mp4" muted loop playsinline></video>
+    <div class="sound-btn">🔇</div>
+  </div>
+
+  <div class="reel">
+    <video src="https://res.cloudinary.com/dxb9l2dzm/video/upload/f_auto,q_auto/v1777660858/Vikas_Mobile_Care_Permotional_video_tthxf6.mp4" muted loop playsinline></video>
+    <div class="sound-btn">🔇</div>
+  </div>
+
+  <div class="reel">
+    <video src="https://res.cloudinary.com/dxb9l2dzm/video/upload/f_auto,q_auto/v1777660795/sad_reel_edit_yad_yad_reh_jaati_h_qunv5s.mp4" muted loop playsinline></video>
+    <div class="sound-btn">🔇</div>
+  </div>
+
+  <div class="reel">
+    <video src="https://res.cloudinary.com/dxb9l2dzm/video/upload/f_auto,q_auto/v1777660848/typography_reel_edit_m3mbau.mp4" muted loop playsinline></video>
+    <div class="sound-btn">🔇</div>
+  </div>
+
+  <div class="reel">
+    <video src="https://res.cloudinary.com/dxb9l2dzm/video/upload/f_auto,q_auto/v1777660655/akash_khatri_reel_edit_hubugi.mp4" muted loop playsinline></video>
+    <div class="sound-btn">🔇</div>
+  </div>
+
+  <div class="reel">
+    <video src="https://res.cloudinary.com/dxb9l2dzm/video/upload/f_auto,q_auto/v1777660700/Free_Fire_FlashBack_Reel_edit_wkqcvz.mp4" muted loop playsinline></video>
+    <div class="sound-btn">🔇</div>
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 HUNNY ERA</p>
+  <p>Designed & Edited by Hunny</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<script>
+const scene = new THREE.Scene();
+
+const camera = new THREE.PerspectiveCamera(
+  75,
+  window.innerWidth/window.innerHeight,
+  0.1,
+  1000
+);
+
+camera.position.z = 5;
+
+const renderer = new THREE.WebGLRenderer({
+  antialias:true,
+  alpha:true
+});
+
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+
+document.body.appendChild(renderer.domElement);
+
+// LIGHT
+const light = new THREE.PointLight(0xffffff,1);
+light.position.set(5,5,5);
+scene.add(light);
+
+// OBJECT
+const geometry = new THREE.SphereGeometry(1,48,48);
+const material = new THREE.MeshStandardMaterial({
+  color:0x4f46e5,
+  metalness:0.8,
+  roughness:0.2
+});
+const sphere = new THREE.Mesh(geometry,material);
+scene.add(sphere);
+
+// CURSOR FOLLOW (ARROW STYLE)
+let mouse = new THREE.Vector2();
+
+window.addEventListener("mousemove",(e)=>{
+  mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+  mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+});
+
+// ANIMATION
+function animate(){
+  requestAnimationFrame(animate);
+
+  // 3D direction vector
+  const vector = new THREE.Vector3(mouse.x, mouse.y, 0.5);
+  vector.unproject(camera);
+
+  // object cursor ki direction me dekhega
+  sphere.lookAt(vector);
+
+  // slight floating motion
+  sphere.position.x += (mouse.x * 1.5 - sphere.position.x) * 0.05;
+  sphere.position.y += (mouse.y * 1.5 - sphere.position.y) * 0.05;
+
+  sphere.rotation.y += 0.002;
+
+  renderer.render(scene,camera);
+}
+animate();
+
+// RESIZE
+window.addEventListener("resize",()=>{
+  camera.aspect = window.innerWidth/window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+</script>
+
+
+
+<script>
+// AUTO PLAY (VISIBLE ONLY)
+const videos = document.querySelectorAll("video");
+
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.play();
+    } else {
+      entry.target.pause();
+    }
+  });
+},{threshold:0.6});
+
+videos.forEach(v=>observer.observe(v));
+
+// SOUND TOGGLE
+document.querySelectorAll(".sound-btn").forEach((btn,i)=>{
+  btn.addEventListener("click", ()=>{
+    const video = videos[i];
+    video.muted = !video.muted;
+    btn.textContent = video.muted ? "🔇" : "🔊";
+  });
+});
+</script>
+
+</body>
+</html>

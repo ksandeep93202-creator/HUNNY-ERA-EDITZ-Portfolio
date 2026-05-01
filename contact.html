@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | HUNNY ERA</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:system-ui;
+  background:#0a0a0a;
+  color:#fff;
+}
+
+/* NAV */
+nav{
+  position:fixed;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 50px;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  background:rgba(255,255,255,0.05);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  z-index:100;
+}
+
+.hunny-logo{
+  width:40px;
+  height:40px;
+  object-fit:cover;
+  border-radius:50%;
+}
+
+.logo{
+  letter-spacing:2px;
+}
+
+.nav-links a{
+  margin-left:25px;
+  text-decoration:none;
+  color:#fff;
+  opacity:0.7;
+}
+.nav-links a:hover{opacity:1;}
+
+/* SECTION */
+.contact-section{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:120px 20px 60px;
+}
+
+/* BOX */
+.contact-box{
+  width:100%;
+  max-width:500px;
+  padding:40px;
+  border-radius:20px;
+
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+  background:linear-gradient(
+    145deg,
+    rgba(255,255,255,0.06),
+    rgba(255,255,255,0.02)
+  );
+
+  border:1px solid rgba(255,255,255,0.1);
+
+  box-shadow:
+    0 0 30px rgba(0,0,0,0.6);
+}
+
+.contact-box h1{
+  text-align:center;
+  margin-bottom:10px;
+}
+
+.contact-box p{
+  text-align:center;
+  opacity:0.6;
+  margin-bottom:25px;
+}
+
+/* INPUT GLOW */
+input, textarea{
+  width:100%;
+  padding:14px;
+  margin:12px 0;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.15);
+  outline:none;
+  color:#fff;
+
+  background:linear-gradient(
+    145deg,
+    rgba(255,255,255,0.08),
+    rgba(255,255,255,0.02)
+  );
+
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+
+  box-shadow:
+    inset 0 0 10px rgba(255,255,255,0.05),
+    0 0 10px rgba(0,0,0,0.5);
+
+  transition:0.3s;
+}
+
+input::placeholder,
+textarea::placeholder{
+  color:rgba(255,255,255,0.4);
+}
+
+input:focus, textarea:focus{
+  border:1px solid #4f46e5;
+  box-shadow:
+    0 0 8px rgba(79,70,229,0.6),
+    0 0 20px rgba(79,70,229,0.3),
+    inset 0 0 10px rgba(255,255,255,0.08);
+}
+
+/* BUTTON */
+button{
+  width:100%;
+  padding:14px;
+  margin-top:10px;
+  border:none;
+  border-radius:12px;
+  background:#4f46e5;
+  color:#fff;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover{
+  box-shadow:
+    0 0 10px #4f46e5,
+    0 0 25px #4f46e5;
+}
+
+/* SOCIAL CTA */
+.social{
+  text-align:center;
+  margin-top:20px;
+}
+
+.social a{
+  display:inline-block;
+  margin:8px;
+  padding:10px 18px;
+  border-radius:30px;
+  background:rgba(255,255,255,0.08);
+  text-decoration:none;
+  color:#fff;
+  font-size:14px;
+  transition:0.3s;
+}
+
+.social a:hover{
+  background:linear-gradient(purple,red);
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:20px;
+  font-size:14px;
+  opacity:0.6;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+  nav{padding:15px 20px;}
+  .nav-links{display:none;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <div><img class="hunny-logo" src="Hunny Era New Logo.png" alt="Logo"></div>
+  <div class="logo">HUNNY ERA</div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="index.html">Work</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<!-- CONTACT -->
+<section class="contact-section">
+  <div class="contact-box">
+    <h1>Contact Me</h1>
+    <p>Let’s create something cinematic together</p>
+
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message"></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+
+    <div class="social">
+      <a href="https://wa.me/+919717844451" target="_blank">WhatsApp</a>
+      <a href="https://instagram.com/hunny_era" target="_blank">Instagram</a>
+      <a href="mailto:ksandeep93202@gmail.com">Email</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 HUNNY ERA • Designed by Hunny
+</footer>
+
+</body>
+</html>
