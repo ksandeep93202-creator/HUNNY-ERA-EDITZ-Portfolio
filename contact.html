@@ -15,37 +15,51 @@ body{
 }
 
 /* NAV */
+/* NAVBAR */
 nav{
-  position:fixed;
-  width:100%;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:18px 50px;
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-  background:rgba(255,255,255,0.05);
-  border-bottom:1px solid rgba(255,255,255,0.08);
-  z-index:100;
+  padding:12px 15px;
+  text-decoration: none;
+}
+
+/* LEFT SIDE */
+.left{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+/* LOGO */
+.logo{
+  font-size:14px;
+  white-space:nowrap; 
+  justify-content: center;
 }
 
 .hunny-logo{
-  width:40px;
-  height:40px;
+  width:30px;
+  height:30px;
   object-fit:cover;
   border-radius:50%;
 }
 
-.logo{
-  letter-spacing:2px;
+/* NAV LINKS */
+.nav-links{
+  /* font-size: 12px; */
+  display:flex;
+  gap:12px;
 }
 
 .nav-links a{
-  margin-left:25px;
-  text-decoration:none;
-  color:#fff;
-  opacity:0.7;
+  font-size:13px;
+  opacity:0.8;
+  /* font-size: 15px; */
+  text-decoration: none;
+  color: aliceblue;
 }
+
 .nav-links a:hover{opacity:1;}
 
 /* SECTION */
@@ -196,13 +210,18 @@ footer{
 
 <!-- NAV -->
 <nav>
-  <div><img class="hunny-logo" src="Hunny Era New Logo.png" alt="Logo"></div>
-  <div class="logo">HUNNY ERA</div>
+
+  <div class="left">
+    <img class="hunny-logo" src="Hunny Era New Logo.png" alt="Logo">
+    <span class="logo">HUNNY ERA</span>
+  </div>
+
   <div class="nav-links">
     <a href="index.html">Home</a>
     <a href="index.html">Work</a>
     <a href="contact.html">Contact</a>
   </div>
+
 </nav>
 
 <!-- CONTACT -->
