@@ -161,13 +161,24 @@ footer p{
   }
 }
 
-@media(max-width:600px){
+@media(max-width:320px){
   nav{
     padding:15px 20px;
+    justify-content: center;
+    /* flex-wrap: wrap; */
+    gap: 12px;
   }
 
   .nav-links{
-    display:none;
+    display:flex;
+    margin: 0;
+    font-size: 10px;
+  }
+
+  .logo{
+    font-size: 13px;
+    letter-spacing: 2px;
+    white-space: nowrap;
   }
 
   .reels{
