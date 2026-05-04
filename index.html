@@ -193,6 +193,82 @@ footer p{
     padding:60px 20px;
   }
 }
+
+/* FOOTER */
+
+footer{
+  background:linear-gradient(to top, #050505, #0a0a0a);
+  padding:70px 40px 25px;
+  border-top:1px solid rgba(255,255,255,0.05);
+}
+
+/* GRID */
+.footer-container{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:40px;
+}
+
+/* HEADINGS */
+.footer-col h3,
+.footer-col h4{
+  margin-bottom:14px;
+  letter-spacing:1px;
+}
+
+/* TEXT */
+.footer-col p{
+  opacity:0.55;
+  font-size:14px;
+  line-height:1.6;
+}
+
+/* LINKS */
+.footer-col a{
+  display:block;
+  text-decoration:none;
+  color:#fff;
+  opacity:0.6;
+  margin:7px 0;
+  font-size:14px;
+  transition:0.3s;
+  position:relative;
+}
+
+/* 🔥 HOVER EFFECT */
+.footer-col a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-2px;
+  width:0%;
+  height:1px;
+  background:#4f46e5;
+  transition:0.3s;
+}
+
+.footer-col a:hover{
+  opacity:1;
+}
+
+.footer-col a:hover::after{
+  width:100%;
+}
+
+/* STATS SPECIAL */
+.footer-col:last-child p{
+  font-size:15px;
+  opacity:0.8;
+}
+
+/* BOTTOM */
+.footer-bottom{
+  text-align:center;
+  margin-top:40px;
+  font-size:13px;
+  opacity:0.4;
+}
+
 </style>
 </head>
 
@@ -351,8 +427,43 @@ footer p{
 
 <!-- FOOTER -->
 <footer>
-  <p>© 2026 HUNNY ERA</p>
-  <p>Designed & Edited by Hunny</p>
+
+  <div class="footer-container">
+
+    <!-- COLUMN 1 -->
+    <div class="footer-col">
+      <h3>HUNNY ERA</h3>
+      <p>Cinematic Edits • Reels • Storytelling</p>
+    </div>
+
+    <!-- COLUMN 2 -->
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <a href="index.html">Home</a>
+      <a href="index.html">Work</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <!-- COLUMN 3 -->
+    <div class="footer-col">
+      <h4>Connect & Hire Me</h4>
+      <a href="https://instagram.com/hunny_era" target="_blank">Instagram</a>
+      <a href="https://wa.me/919717844451" target="_blank">WhatsApp</a>
+      <a href="mailto:ksandeep93202@gmail.com">Email</a>
+      <a href="https://www.youtube.com/@hunny_era" target="_blank">YouTube</a>
+    </div>
+
+    <!-- COLUMN 4 -->
+    <div class="footer-col">
+      <h4>Stats</h4>
+      <p id="subs"><strong>2.3K+</strong> Subscribers</p>
+      <p><strong>2.2M+</strong> Views</p>
+    </div>
+
+  </div>
+
+  <p class="footer-bottom">© 2026 HUNNY ERA • Designed by Hunny</p>
+
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -457,6 +568,7 @@ document.querySelectorAll(".sound-btn").forEach((btn,i)=>{
     btn.textContent = video.muted ? "🔇" : "🔊";
   });
 });
+
 </script>
 
 </body>
