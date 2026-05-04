@@ -281,6 +281,30 @@ footer{
   opacity:0.4;
 }
 
+/* ===== TABLET ===== */
+@media(max-width:900px){
+  .footer-container{
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+  }
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:500px){
+  .footer-container{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+
+  .footer-col{
+    margin-bottom:20px;
+  }
+
+  .footer-col a{
+    margin:8px 0;
+  }
+}
+
 </style>
 </head>
 
@@ -480,6 +504,10 @@ footer{
 
 </footer>
 
+
+
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <script>
@@ -558,6 +586,17 @@ const particlesMaterial = new THREE.PointsMaterial({
 const particles = new THREE.Points(particlesGeometry, particlesMaterial);
 scene.add(particles);
 
+/* ===== RESPONSIVE SCALE FUNCTION 🔥 */
+function getBaseScale(){
+  if(window.innerWidth < 500){
+    return 0.35; // mobile small
+  }else if(window.innerWidth < 900){
+    return 0.5; // tablet
+  }else{
+    return 0.7; // desktop
+  }
+}
+
 /* ===== MOUSE ===== */
 let mouseX = 0;
 let mouseY = 0;
@@ -575,8 +614,10 @@ function animate(){
 
   time += 0.02;
 
-  /* breathing effect */
-  mesh.scale.setScalar(1 + Math.sin(time) * 0.05);
+  let base = getBaseScale();
+
+  /* breathing + responsive */
+  mesh.scale.setScalar(base + Math.sin(time) * 0.03);
 
   /* rotation */
   mesh.rotation.y += 0.002;
@@ -586,6 +627,7 @@ function animate(){
   mesh.position.y += (-mouseY * 2 - mesh.position.y) * 0.05;
 
   glow.position.copy(mesh.position);
+  glow.scale.setScalar(base);
 
   /* particles motion */
   particles.rotation.y += 0.0005;
