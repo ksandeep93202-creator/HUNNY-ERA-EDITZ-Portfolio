@@ -18,10 +18,7 @@ body{
 
 canvas{
   position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
+  inset:0;
   z-index:-1;
   pointer-events:none;
 }
@@ -45,11 +42,22 @@ canvas{
 
 /* NAVBAR */
 nav{
+  position:fixed;      /* 🔥 main fix */
+  top:0;
+  left:0;
+  width:100%;
+
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:12px 15px;
-  text-decoration: none;
+
+  padding:14px 20px;
+
+  background:rgba(0,0,0,0.4);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+
+  z-index:1000;
 }
 
 /* LEFT SIDE */
@@ -59,44 +67,48 @@ nav{
   gap:8px;
 }
 
-/* LOGO */
-.logo{
-  font-size:14px;
-  white-space:nowrap; 
-  justify-content: center;
-}
-
 .hunny-logo{
-  width:30px;
-  height:30px;
+  width:32px;
+  height:32px;
   object-fit:cover;
   border-radius:50%;
+}
+
+.logo{
+  font-size:14px;
+  white-space:nowrap;
 }
 
 /* NAV LINKS */
 .nav-links{
   display:flex;
-  gap:12px;
+  gap:15px;
 }
 
 .nav-links a{
-  font-size:13px;
-  opacity:0.8;
-  text-decoration: none;
-  color: aliceblue;
+  text-decoration:none;
+  color:#fff;
+  font-size:14px;
+  opacity:0.7;
+  transition:0.3s;
 }
 
-.nav-links a:hover{opacity:1;}
-/* HERO */
+.nav-links a:hover{
+  opacity:1;
+}
+
+/* ===== HERO FIX ===== */
 .hero{
   height:100vh;
   display:flex;
   justify-content:center;
   align-items:center;
   text-align:center;
-  padding:20px;
+
+  padding-top:80px; /* 🔥 navbar overlap fix */
 }
 
+/* TEXT */
 .hero h1{
   font-size:clamp(32px,6vw,64px);
 }
@@ -469,79 +481,124 @@ footer{
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <script>
+/* SCENE */
 const scene = new THREE.Scene();
 
-const camera = new THREE.PerspectiveCamera(
-  75,
-  window.innerWidth/window.innerHeight,
-  0.1,
-  1000
-);
-
+/* CAMERA */
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
 camera.position.z = 5;
 
-const renderer = new THREE.WebGLRenderer({
-  antialias:true,
-  alpha:true
-});
-
-renderer.setSize(window.innerWidth, window.innerHeight);
+/* RENDERER */
+const renderer = new THREE.WebGLRenderer({ alpha:true, antialias:true });
 renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
-
+renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-// LIGHT
-const light = new THREE.PointLight(0xffffff,1);
-light.position.set(5,5,5);
-scene.add(light);
+/* LIGHTS */
+const light1 = new THREE.PointLight(0x4f46e5, 2);
+light1.position.set(3,3,3);
+scene.add(light1);
 
-// OBJECT
-const geometry = new THREE.SphereGeometry(1,48,48);
-const material = new THREE.MeshStandardMaterial({
+const light2 = new THREE.PointLight(0xffffff, 1.2);
+light2.position.set(-3,-3,3);
+scene.add(light2);
+
+/* ===== GLASS ORB ===== */
+const geometry = new THREE.SphereGeometry(1.5, 64, 64);
+
+const material = new THREE.MeshPhysicalMaterial({
   color:0x4f46e5,
-  metalness:0.8,
-  roughness:0.2
+  metalness:0,
+  roughness:0,
+  transmission:1,
+  thickness:1,
+  transparent:true,
+  opacity:0.9
 });
-const sphere = new THREE.Mesh(geometry,material);
-scene.add(sphere);
 
-// CURSOR FOLLOW (ARROW STYLE)
-let mouse = new THREE.Vector2();
+const mesh = new THREE.Mesh(geometry, material);
+scene.add(mesh);
+
+/* INNER LIGHT */
+const innerLight = new THREE.PointLight(0x4f46e5, 2, 10);
+mesh.add(innerLight);
+
+/* GLOW */
+const glow = new THREE.Mesh(
+  new THREE.SphereGeometry(2.3, 32, 32),
+  new THREE.MeshBasicMaterial({
+    color:0x4f46e5,
+    transparent:true,
+    opacity:0.05
+  })
+);
+scene.add(glow);
+
+/* ===== PARTICLES ===== */
+const particlesGeometry = new THREE.BufferGeometry();
+const count = 400;
+
+const positions = new Float32Array(count * 3);
+
+for(let i=0;i<count*3;i++){
+  positions[i] = (Math.random()-0.5)*18;
+}
+
+particlesGeometry.setAttribute("position", new THREE.BufferAttribute(positions,3));
+
+const particlesMaterial = new THREE.PointsMaterial({
+  size:0.02,
+  color:0xffffff,
+  transparent:true,
+  opacity:0.5
+});
+
+const particles = new THREE.Points(particlesGeometry, particlesMaterial);
+scene.add(particles);
+
+/* ===== MOUSE ===== */
+let mouseX = 0;
+let mouseY = 0;
 
 window.addEventListener("mousemove",(e)=>{
-  mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
-  mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+  mouseX = (e.clientX / window.innerWidth - 0.5);
+  mouseY = (e.clientY / window.innerHeight - 0.5);
 });
 
-// ANIMATION
+/* ===== ANIMATION ===== */
+let time = 0;
+
 function animate(){
   requestAnimationFrame(animate);
 
-  // 3D direction vector
-  const vector = new THREE.Vector3(mouse.x, mouse.y, 0.5);
-  vector.unproject(camera);
+  time += 0.02;
 
-  // object cursor ki direction me dekhega
-  sphere.lookAt(vector);
+  /* breathing effect */
+  mesh.scale.setScalar(1 + Math.sin(time) * 0.05);
 
-  // slight floating motion
-  sphere.position.x += (mouse.x * 1.5 - sphere.position.x) * 0.05;
-  sphere.position.y += (mouse.y * 1.5 - sphere.position.y) * 0.05;
+  /* rotation */
+  mesh.rotation.y += 0.002;
 
-  sphere.rotation.y += 0.002;
+  /* cursor follow */
+  mesh.position.x += (mouseX * 2 - mesh.position.x) * 0.05;
+  mesh.position.y += (-mouseY * 2 - mesh.position.y) * 0.05;
 
-  renderer.render(scene,camera);
+  glow.position.copy(mesh.position);
+
+  /* particles motion */
+  particles.rotation.y += 0.0005;
+
+  renderer.render(scene, camera);
 }
 animate();
 
-// RESIZE
+/* ===== RESPONSIVE ===== */
 window.addEventListener("resize",()=>{
   camera.aspect = window.innerWidth/window.innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
 });
 </script>
-
 
 
 <script>
